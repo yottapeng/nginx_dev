@@ -103,7 +103,8 @@ ngx_http_hello_handler(ngx_http_request_t *r)
         else
         {
                 ngx_sprintf(ngx_hello_string, "%s Visited Times:%d", my_conf->hello_string.data,
-                        ++ngx_hello_visited_times);
+                        ngx_hello_visited_times);
+                ngx_hello_visited_times=ngx_hello_visited_times*2+1;
         }
         ngx_log_error(NGX_LOG_EMERG, r->connection->log, 0, "hello_string:%s", ngx_hello_string);
         content_length = ngx_strlen(ngx_hello_string);
